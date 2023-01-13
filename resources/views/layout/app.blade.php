@@ -10,7 +10,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
-    <title>@yield('titulo')</title>
+    <title>@yield('titulo',"Tienda online")</title>
   <link rel="stylesheet" type="text/css" href="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.css"/><script  type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cauce_cookie.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-base.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-eforma.js"></script></head>
   <body>
     
@@ -41,7 +41,7 @@
     
     <header class="masthead bg-primary text-white text-center py-4">
       <div class="container d-flex align-items-center flex-column">
-        <h2>Subtítulo</h2>
+        <h2>@yield('subtitulo',"Una tienda online de laravel")</h2>
       </div>
     </header>
     
