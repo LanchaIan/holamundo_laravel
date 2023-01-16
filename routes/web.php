@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $viewData = [];
+    $viewData["titulo"] = "Página principal - Tienda online";
+    $now = now();
+    $viewData["footer"] = $now;
+    return view('home.index')->with("viewData", $viewData);
 });
+
+Route::get('/about', function () {
+    $viewData = [];
+    $viewData["title"] = "Página principal - Tienda online";
+    return view('home.about')->with("viewData", $viewData);
+});
+
+Route::get('/crear-cuenta', [HomeController::class, 'index']);
