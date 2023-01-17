@@ -1,14 +1,14 @@
 @extends('layout.app')
-@section('titulo')
-@section('subtitle')
+@section('title', $title)
+@section('subtitle', $subtitle)
 @section('contenido')
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4 ms-auto">
-				<p class="lead">{{ "about"}}</p>
+				<p class="lead">{{ $description }}</p>
 			</div>
 			<div class="col-lg-4 me-auto">
-				<p class="lead">{{ "ian" }}</p>
+				<p class="lead">{{ $author }}</p>
 			</div>
 		</div>
 	</div>
