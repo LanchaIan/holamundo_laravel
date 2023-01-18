@@ -1,7 +1,5 @@
 @extends('layout.app')
-@section('titulo')
-Pagina de Ian Santana
-@endsection
+@section('titulo', $viewData['titulo'])
 @section('contenido')
 <div class="row">
 	<div class="col-md-6 col-lg-4 mb-2">
