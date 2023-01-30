@@ -9,7 +9,7 @@
   <div class="card-body">
 
   **** SI HA OCURRIDO ALGÚN ERROR DE VALIDACIÓN, MUÉSTRALO AQUÍ *****
-    <form method="POST" action={{store}}>
+    <form method="POST" action='/admin/products/store'>
       @csrf
       <div class="row">
         <div class="col">
