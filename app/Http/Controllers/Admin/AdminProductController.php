@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $viewData = [];
         $productos = Product::all();
         $viewData['titulo'] = "Productos admin page";
@@ -15,21 +17,37 @@ class AdminProductController extends Controller
         return view('admin.product.index')->with("viewData", $viewData);
     }
 
-    function store (Request $request){
-        $producto = [];
-        $nombre = $request -> validate([  "name" => "required|max:255"]);
-        $precio = $request -> validate([  "price" => "required|integer|min:0|not_in:0"]);
-        $descripcion = $request -> validate([  "description" => "required"]);
-        $imagen = 'image.png';
-        $producto["nombre"] = $nombre;
-        $producto['precio'] = $precio;
-        $producto['descripcion'] = $descripcion;
-        $producto['imagen'] = $imagen;
+    function store(Request $request)
+    {
+        $request->validate([
+            "name" => "required|max:255",
+            "price" => "required|integer|min:0|not_in:0",
+            "description" => "required"
+        ]);
 
-        Product::create([ "name" => $producto["nombre"],
-        "price" => $producto["precio"],
-        "description" => $producto["descripcion"],
-        "image" => $producto["imagen"] ]);
+        $product = new Product();
+        $product->name = $request['name'];
+        $product->description = $request['description'];
+        $product->image = "1.png";
+        $product->price = $request["price"];
+        $product->save();
+
+        if ($request->hasFile('image')) {
+            $imageName = $product->id . "." . $request->file('image')->extension();
+            Storage::disk('public')->put(
+                $imageName,
+                file_get_contents($request->file('image')->getRealPath())
+            );
+            $product -> image = $imageName;
+            $product -> save();
+        }
+
+        $viewData = [];
+        $viewData['titulo'] = "Productos admin page";
+        $viewData['productos'] = Product::all();
+
+        return view('admin.product.index')
+            ->with('sucess', 'Producto creado correctamente!')
+            ->with("viewData", $viewData);;
     }
-    
 }

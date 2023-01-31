@@ -22,7 +22,7 @@
         <li><a href={{ route('admin.home.index') }} class="nav-link text-white">- Admin - Home</a></li>
         <li><a href={{ route('admin.product.index') }} class="nav-link text-white">- Admin - Products</a></li>
         <li>
-          <a href="*** ENLACE A LA PÁGINA PRINCIPAL ***" class="mt-2 btn bg-primary text-white">Go back to the home page</a>
+          <a href={{ route('home.index')}} class="mt-2 btn bg-primary text-white">Go back to the home page</a>
         </li>
       </ul>
     </div>
