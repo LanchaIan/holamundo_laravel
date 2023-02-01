@@ -53,8 +53,6 @@
         </tr>
       </thead>
       <tbody>
-
-        ****** MUESTRA EL LISTADO DE LOS PRODUCTOS *****
         @foreach ($viewData['productos'] as $producto)
             <thead>
             <tr>
@@ -69,5 +67,4 @@
     </table>
   </div>
 </div>
-****** FIN CONTENIDO ******
 @endsection
