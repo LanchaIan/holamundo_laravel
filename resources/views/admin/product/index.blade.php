@@ -72,7 +72,14 @@
               <th scope="col">{{$producto['id']}}</th>
               <th scope="col">{{$producto['name']}}</th>
               <th scope="col">Editar</th>
-              <th scope="col">Eliminar</th>
+              <th scope="col">
+                <form action="\{\{ route('admin.product.delete', $product->getId())\}\}" method="POST">
+                  @method('DELETE')
+                  <button class="btn btn-delete">
+                      Eliminar
+                  </button>
+              </form>
+              </th>
             </tr>
           </thead>
         @endforeach
