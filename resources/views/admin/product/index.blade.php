@@ -1,15 +1,24 @@
 @extends('layout.admin')
 @section('titulo', $viewData['titulo'])
 @section('contenido')
-*** INICIO BLOQUE CONTENIDO ****
 <div class="card mb-4">
   <div class="card-header">
     Crear productos
   </div>
   <div class="card-body">
 
-  **** SI HA OCURRIDO ALGÚN ERROR DE VALIDACIÓN, MUÉSTRALO AQUÍ *****
-    <form method="POST" action={{store}}>
+
+    @if ($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{$error}}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+
+    <form method="POST" action= "{{ route("admin.product.store") }}" enctype="multipart/form-data">
       @csrf
       <div class="row">
         <div class="col">
@@ -32,6 +41,10 @@
       <div class="mb-3">
         <label class="form-label">Descripción</label>
         <textarea class="form-control" name="description" rows="3"></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Imagen</label>
+        <input type="file" class="form-control" name="image" id="image">
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
