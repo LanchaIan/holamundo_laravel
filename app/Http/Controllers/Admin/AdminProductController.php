@@ -50,4 +50,17 @@ class AdminProductController extends Controller
             ->with('sucess', 'Producto creado correctamente!')
             ->with("viewData", $viewData);;
     }
+
+    function delete($id){
+        $producto_eliminar = Product::findOrFail($id);
+        $producto_eliminar->delete();
+
+        $viewData = [];
+        $viewData['titulo'] = "Productos admin page";
+        $viewData['productos'] = Product::all();
+
+        return view('admin.product.index')
+            ->with('sucess', 'Producto creado correctamente!')
+            ->with("viewData", $viewData);;
+    }
 }

@@ -73,9 +73,9 @@
               <th scope="col">{{$producto['name']}}</th>
               <th scope="col">Editar</th>
               <th scope="col">
-                <form action="\{\{ route('admin.product.delete', $product->getId())\}\}" method="POST">
+                <form action="{{ route('admin.product.delete', $producto['id'])}}" method="POST">
                   @method('DELETE')
-                  <button class="btn btn-delete">
+                  <button class="btn btn-danger">
                       Eliminar
                   </button>
               </form>
