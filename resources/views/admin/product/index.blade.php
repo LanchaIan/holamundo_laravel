@@ -58,10 +58,31 @@
         @foreach ($viewData['productos'] as $producto)
             <thead>
             <tr>
+<<<<<<< Updated upstream
               <th scope="col">{{$producto['id']}}</th>
               <th scope="col">{{$producto['name']}}</th>
               <th scope="col">Editar</th>
               <th scope="col">Eliminar</th>
+=======
+              <th scope="col">{{$producto->id}}</th>
+              <th scope="col">{{$producto->name}}</th>
+              <th scope="col">
+                <a href="{{ route('admin.product.edit', $producto->id)}}">
+                  <button class="btn btn-info" type="submit">
+                      Editar
+                  </button>
+                </a>
+              </th>
+              <th scope="col">
+                <form action="{{ route('admin.product.delete', $producto->id)}}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn btn-danger">
+                      Eliminar
+                  </button>
+              </form>
+              </th>
+>>>>>>> Stashed changes
             </tr>
           </thead>
         @endforeach
