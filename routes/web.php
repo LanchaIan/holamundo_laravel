@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name("home.index");
 
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.about");
 
@@ -22,23 +22,25 @@ Route::get('/products', 'App\Http\Controllers\ProductController@index')->name("p
 
 Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name("products.show");
 
-Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
-
-Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name("admin.product.index");
-
-<<<<<<< Updated upstream
-=======
-Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name("admin.product.store");
-
-Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name("admin.product.delete");
-
-Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
-Route::post('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
-
 Auth::user();
 Auth::routes();
 
-Route::middleware('publicador')->group(function () {
-    Route::get('/publicar', 'App\Http\Controllers\Admin\AdminPubController@index')->name("admin.pub.index");
+Route::middleware('auth','admin')->group(function () {
+    Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
+    Route::get('/admin/products', 'App\Http\Controllers\Admin\AdminProductController@index')->name("admin.product.index");
+    Route::post('/admin/products/store', 'App\Http\Controllers\Admin\AdminProductController@store')->name("admin.product.store");
+    Route::delete('/admin/products/{id}/delete', 'App\Http\Controllers\Admin\AdminProductController@delete')->name("admin.product.delete");
+    Route::get('/admin/products/{id}/edit', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
+    Route::post('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
 });
->>>>>>> Stashed changes
+
+Route::get('/', function () {
+    // Retrieve a piece of data from the session...
+    $color = session('color');
+    $letra = session('letra');
+ 
+    // Specifying a default value...
+    $color = session('color', 'black');
+    $letra = session('letra', 'arial');
+
+});
