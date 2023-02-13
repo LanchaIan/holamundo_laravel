@@ -17,7 +17,7 @@
     <!-- header -->
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
-      <div class="container">
+      <div class="container" style="background-color: {{}}">
         <a class="navbar-brand" href={{ route('home.index')}}>Online Store</a>
         <button
           class="navbar-toggler"
