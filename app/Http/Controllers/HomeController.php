@@ -21,17 +21,11 @@ class HomeController extends Controller
     
 
 
-    public function about(Request $request) {
-        session('color');
-        session('letra');
-        $request->session()->put('color', 'white');
-        $request->session()->put('letra', 'letra');
+    public function about() {
         $viewData['titulo'] = "Tienda online Ian";
         $viewData['subtitulo'] = "Subtitulos";
         $viewData['description'] = "Página de Ian";
         $viewData['author'] = "Ian Santana";
-        $viewData['color'] = $request->session()->get('color');
-        $viewData['letras'] = $request->session()->get('letras');
         return view('home.about')->with("viewData", $viewData);
 }
 }

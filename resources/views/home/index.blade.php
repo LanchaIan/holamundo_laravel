@@ -1,7 +1,5 @@
 @extends('layout.app')
 @section('titulo', $viewData['titulo'])
-@section('cabecera', $viewData['color'])
-@section('letras', $viewData['letras'])
 @section('contenido')
 <div class="row">
 	<div class="col-md-6 col-lg-4 mb-2">

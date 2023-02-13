@@ -12,12 +12,12 @@
     <link rel="stylesheet" href={{ asset('css/app.css') }}>
     <title>@yield('titulo',"Tienda online")</title>
   <link rel="stylesheet" type="text/css" href="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.css"/><script  type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cookieconsent.min.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/cookies/cauce_cookie.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-base.js"></script><script type="text/javascript" src="https://www3.gobiernodecanarias.org/educacion/cau_ce/estadisticasweb/scripts/piwik-eforma.js"></script></head>
-  <body>
+  <body style="font-family: {{ session('letra', 'Arial') }}!important">
     
     <!-- header -->
     
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-4">
-      <div class="container" style="background-color: {{}}">
+      <div class="container">
         <a class="navbar-brand" href={{ route('home.index')}}>Online Store</a>
         <button
           class="navbar-toggler"
@@ -35,6 +35,7 @@
             <a class="nav-link active" href={{ route('home.index')}}>Home</a>
             <a class="nav-link active" href={{ route('home.about')}}>About</a>
             <a class="nav-link active" href={{ route('products.index')}}>Productos</a>
+            <a class="nav-link active" href={{ route('conf.index') }}>Settings</a>
           </div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
@@ -78,7 +79,7 @@
       </div>
     </nav>
     
-    <header class="masthead bg-primary text-white text-center py-4">
+    <header class="masthead bg-primary text-white text-center py-4" style="background-color: {{ session('header', '#333') }}!important">
       <div class="container d-flex align-items-center flex-column">
         <h2>@yield('subtitulo',"Una tienda online de laravel")</h2>
       </div>

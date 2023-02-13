@@ -6,16 +6,32 @@ use Illuminate\Http\Request;
 
 class ConfController extends Controller
 {
-        /**
-     * @param  Request  $request
-     * @param  int  $id
-     * @return Response
-     */
-    public function change(Request $request)
+    function index(Request $request)
     {
-        $request->session()->pull('color');
-        $request->session()->pull('letra');
-        $request->session()->put('color', $request->input('color'));
-        $request->session()->put('letra', $request->input('letra'));
+        $headerColor = session('header', '#333');
+
+        $fontType = session('letra', 'Arial');
+
+        $viewData = [];
+        $viewData["title"] = "Admin Page - Tienda online";
+
+        return view('conf.index', [
+        ])->with("viewData", $viewData);
+    }
+
+    function update(Request $request)
+    {
+        $headerColor = $request->input('header');
+        $fontStyle = $request->input('letra');
+    
+        session(['header' => $headerColor]);
+        session(['letra' => $fontStyle]);
+
+        $viewData = [];
+        $viewData["title"] = "Product Page - Tienda online";
+
+        return redirect()->route('home.index')
+            ->with('success', 'Configuración actualizada correctamente.')
+            ->with("viewData", $viewData);
     }
 }

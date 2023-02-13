@@ -35,7 +35,8 @@ Route::middleware('auth','admin')->group(function () {
     Route::get('/admin', 'App\Http\Controllers\Admin\AdminHomeController@index')->name("admin.home.index");
 });
 
-Route::middleware('auth','client')->group(function () {
-    Route::get('/conf', 'App\Http\Controllers\ConfController@about')->name("home.conf");
+Route::middleware('auth')->group(function () {
+    Route::get('/conf/index', 'App\Http\Controllers\ConfController@index')->name('conf.index');
+    Route::post('/conf/update', 'App\Http\Controllers\ConfController@update')->name('conf.update');
 });
 
