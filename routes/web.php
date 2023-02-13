@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name("home.index");
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
 
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name("home.about");
 
@@ -34,13 +34,3 @@ Route::middleware('auth','admin')->group(function () {
     Route::post('/admin/products/{id}/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
 });
 
-Route::get('/', function () {
-    // Retrieve a piece of data from the session...
-    $color = session('color');
-    $letra = session('letra');
- 
-    // Specifying a default value...
-    $color = session('color', 'black');
-    $letra = session('letra', 'arial');
-
-});
