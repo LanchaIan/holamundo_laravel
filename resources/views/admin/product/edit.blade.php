@@ -18,7 +18,7 @@
       </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.product.update', $producto->id)}}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.product.update',  ['id' => $producto->id])}}" enctype="multipart/form-data">
       @csrf
       <div class="row">
         <div class="col">
@@ -43,8 +43,12 @@
         <textarea class="form-control" name="description" rows="3">{{$producto->description}}</textarea>
       </div>
       <div class="mb-3">
+        <div class="mb-3">
+          <label class="form-label">Imagen actual</label><br>
+          <img src="{{ asset('storage/' . $producto->image) }}" alt="{{ $producto->name }}" width="200">
+      </div>
         <label class="form-label">Imagen</label>
-        <input type="file" class="form-control" name="image" id="image" value="{{$producto->image}}">
+        <input type="file" class="form-control" name="image" id="image">
       </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
