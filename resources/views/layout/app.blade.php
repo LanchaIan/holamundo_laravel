@@ -35,7 +35,15 @@
             <a class="nav-link active" href={{ route('home.index')}}>Home</a>
             <a class="nav-link active" href={{ route('home.about')}}>About</a>
             <a class="nav-link active" href={{ route('products.index')}}>Productos</a>
-            <a class="nav-link active" href={{ route('conf.index') }}> {{ Auth::user()->name }}</a>
+            @guest
+                    @if (Route::has('login'))
+                    @endif
+
+                    @if (Route::has('register'))
+                    @endif
+                @else
+                <a class="nav-link active" href={{ route('conf.index') }}> {{ Auth::user()->name }}</a>
+                @endguest
             <a class="nav-link active" href={{ route('api.index') }}>Api</a>
           </div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
