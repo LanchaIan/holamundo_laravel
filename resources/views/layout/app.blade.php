@@ -35,7 +35,8 @@
             <a class="nav-link active" href={{ route('home.index')}}>Home</a>
             <a class="nav-link active" href={{ route('home.about')}}>About</a>
             <a class="nav-link active" href={{ route('products.index')}}>Productos</a>
-            <a class="nav-link active" href={{ route('conf.index') }}>Settings</a>
+            <a class="nav-link active" href={{ route('conf.index') }}> {{ Auth::user()->name }}</a>
+            <a class="nav-link active" href={{ route('api.index') }}>Api</a>
           </div>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto">
@@ -57,7 +58,7 @@
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                            Sesion
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

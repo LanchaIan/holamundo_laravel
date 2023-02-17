@@ -35,6 +35,10 @@
         <label class="form-label">Imagen</label>
         <input type="file" class="form-control" name="image" id="image">
       </div>
+      <div class="mb-3">
+        <label class="form-label">Especificaciones</label>
+        <input type="file" class="form-control" name="especificaciones" id="especificaciones">
+      </div>
       <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
   </div>

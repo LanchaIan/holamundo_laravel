@@ -47,6 +47,12 @@
           <label class="form-label">Imagen actual</label><br>
           <img src="{{ asset('storage/' . $producto->image) }}" alt="{{ $producto->name }}" width="200">
       </div>
+
+      <div class="mb-3">
+        <div class="mb-3">
+          <label class="form-label">Especificaciones actuales actual</label><br>
+          <img src="{{ asset('storage/' . $producto->especificaciones) }}" alt="{{ $producto->name }}" width="200">
+      </div>
         <label class="form-label">Imagen</label>
         <input type="file" class="form-control" name="image" id="image">
       </div>

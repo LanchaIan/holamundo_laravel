@@ -30,6 +30,7 @@ class AdminProductController extends Controller
         $product->description = $request['description'];
         $product->image = "1.png";
         $product->price = $request["price"];
+        $product->especificaciones = "especi.pdf";
         $product->save();
 
         if ($request->hasFile('image')) {
@@ -39,6 +40,17 @@ class AdminProductController extends Controller
                 file_get_contents($request->file('image')->getRealPath())
             );
             $product -> image = $imageName;
+            $product -> save();
+        }
+
+
+        if ($request->hasFile('especificaciones')) {
+            $especificacionesName = $product->id . "." . $request->file('especificaciones')->extension();
+            Storage::disk('public')->put(
+                $especificacionesName,
+                file_get_contents($request->file('especificaciones')->getRealPath())
+            );
+            $product -> especificaciones = $especificacionesName;
             $product -> save();
         }
 
@@ -57,6 +69,9 @@ class AdminProductController extends Controller
 
         $imageName = $producto_eliminar -> image;
         Storage::disk('public')->delete($imageName);
+
+        $especificacionesName = $producto_eliminar -> especificaciones;
+        Storage::disk('public')->delete($especificacionesName);
 
         $viewData = [];
         $viewData['titulo'] = "Productos admin page";
@@ -99,6 +114,17 @@ class AdminProductController extends Controller
             );
             $producto -> image = $imageName;
         }
+
+        if ($request->hasFile('especificaciones')) {
+            $especificacionesName = $producto->id . "." . $request->file('especificaciones')->extension();
+            Storage::disk('public')->put(
+                $especificacionesName,
+                file_get_contents($request->file('especificaciones')->getRealPath())
+            );
+            $producto -> especificaciones = $especificacionesName;
+            $producto -> save();
+        }
+
         $producto -> save();
 
         $viewData = [];
